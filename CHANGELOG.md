@@ -5,6 +5,8 @@ This role adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased][unreleased]
 
+### Added
+* Preliminary support for artisan scheduled tasks using a user crontab - yet to be tested.
 ## [0.1.1] - 2015-04-05
 
 ### Changed

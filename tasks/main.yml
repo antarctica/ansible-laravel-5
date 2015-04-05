@@ -1,3 +1,6 @@
 ---
 
 - include: app-user.yml
+
+- include: artisan-schedule.yml
+  when: laravel5_enable_artisan_scheduler == True

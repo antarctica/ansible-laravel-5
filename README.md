@@ -8,6 +8,7 @@ Configures support for a Laravel 5 application
 
 * Configures a Laravel environment, and example environment, file.
 * Optionally adds an alias for `php artisan` to an app user's `.bash_aliases` file, this is enabled by default.
+* Optionally adds support for Laravel's scheduled task mechanism in an app user's crontab, this is disabled by default.
 
 ## Availability
 
@@ -50,6 +51,12 @@ Laravel 5 is required to use this role. For older versions please see the `larav
     * By default this variable will use the `app_root` variable if available. If not, a fall back value will be used.
     * The `app_root` variable **SHOULD** be set within a project, either in a playbook or group/host vars file.
     * Default: "{{ app_root }}" if defined otherwise, "/app"
+* `laravel5_enable_artisan_scheduler`
+    * If "true" a cron task to call Laravel's scheduled task mechanism will be added to the *app* user's crontab
+    * See the [Laravel documentation on scheduling artisan commands](http://laravel.com/docs/5.0/artisan#scheduling-artisan-commands) for more information.
+    * The *app* user is determined by `laravel5_app_user_username`.
+    * This is a binary variable and **MUST** be set to either "true" or "false" (without quotes).
+    * Default: "false"
 
 #### Environment file variables
 

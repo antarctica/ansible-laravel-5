@@ -6,6 +6,8 @@ laravel5_app_user_add_artisan_bash_aliases: true
 
 laravel5_app_root: "{{ app_root | default('/app') }}" 
 
+laravel5_enable_artisan_scheduler: false
+
 laravel5_env_app_env: "{{ app_environment | default('production') }}"
 laravel5_env_app_debug: false
 laravel5_env_app_key: "{{ 'some-random-string'|password_hash('sha512') }}"

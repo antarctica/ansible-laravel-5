@@ -1,0 +1,4 @@
+---
+
+- name: enable artisan scheduler cron task within app users crontab
+  cron: name="laravel artisan scheduler cron task" job="php {{ laravel5_app_root }}/artisan schedule:run 1>> /dev/null 2>&1" user="{{ laravel5_app_user_username }}" state="present"
