@@ -31,13 +31,13 @@ Laravel 5 is required to use this role. For older versions please see the `larav
 * For new projects [use Composer to create a new Laravel application](http://laravel.com/docs/5.0/installation).
 * For existing [1] projects you shouldn't need to make any changes.
 
-[1] You can tell if a project is already using Laravel by checking for `"laravel/framework"` in the project's `composer.json` file and the presence of an `app/` directory both within the path specified by `laravel5_app_root`.
+[1] You can tell if a project is already using Laravel, by checking for `"laravel/framework"` in the project's `composer.json` file, and an `app/` directory, both within the path specified by `laravel5_app_root`.
 
 ### Variables
 
 * `laravel5_app_user_username`
-    * The username for the user which is safe for the application to use and will own the application directory
-    * Ideally this user account should be a *standard* user, i.e. without access to `sudo` or similar commands or to sensitive directories such as `/etc/ssl/private`.
+    * The username for the user which is safe for the application to use, and will typically own the `laravel5_app_root` directory
+    * Ideally this user account should be a *standard* user, i.e. without access to `sudo` or similar or to system directories such as `/etc`.
     * This variable **MUST** be a valid UNIX user.
     * Default: "app"
 * `laravel5_app_user_add_artisan_bash_aliases`
@@ -48,11 +48,11 @@ Laravel 5 is required to use this role. For older versions please see the `larav
 * `laravel5_app_root`
     * Path to the directory holding the laravel app (i.e. containing `app/` and `composer.json`)
     * This variable **MUST** point to a valid directory and **MUST NOT** include a trailing `/`.
-    * By default this variable will use the `app_root` variable if available. If not, a fall back value will be used.
+    * By default, this variable will use the `app_root` variable if available. If not, a fall back value will be used.
     * The `app_root` variable **SHOULD** be set within a project, either in a playbook or group/host vars file.
-    * Default: "{{ app_root }}" if defined otherwise, "/app"
+    * Default: "{{ app_root }}" if defined, otherwise "/app"
 * `laravel5_enable_artisan_scheduler`
-    * If "true" a cron task to call Laravel's scheduled task mechanism will be added to the *app* user's crontab
+    * If "true" a cron task to call Laravel's scheduled task mechanism every minute will be added to the *app* user's crontab
     * See the [Laravel documentation on scheduling artisan commands](http://laravel.com/docs/5.0/artisan#scheduling-artisan-commands) for more information.
     * The *app* user is determined by `laravel5_app_user_username`.
     * This is a binary variable and **MUST** be set to either "true" or "false" (without quotes).
@@ -60,58 +60,58 @@ Laravel 5 is required to use this role. For older versions please see the `larav
 
 #### Environment file variables
 
-These variables are used to override the items passed to the `dot-env` role in order to create the Laravel `.env` and `.env.example` files.
+These variables are used to override the items passed to the `dot-env` role in order to create Laravel `.env` and `.env.example` files.
 
-By default this role will populate these environment files with the items listed in the environment file shipped with Laravel, though some item values have been changed. The values of these items can be controlled using the variables described in this section. 
+By default, this role will populate these environment files with the items listed in the environment file shipped with Laravel, though some item values have been changed. The values of these items can be controlled using the variables described in this section. 
 
-To add addition items to these environment files it is recommended to call the `dot-env` in your application playbooks (or roles) with these additional items. This ensure default items are added by this role, allowing you to concentrate only on these additional items.
+To add addition items to these environment files, you **SHOULD** call the `dot-env` role in your application playbooks (or roles) with any additional items. This ensure default items are added by this role, allowing you to concentrate just on additional items.
 
-To remove an item set by default you will need to override the `dot_env_key_value_items` variable.
+To remove an item set by default by this role, you will need to override the `dot_env_key_value_items` variable.
 
-Note: If you override the `dot_env_key_value_items` variable, you will need to ensure you include any items you wish to keep that are set by this role.
+Note: If you override the `dot_env_key_value_items` variable, you **MUST** ensure you include any items set by this role you wish to keep.
 
 * `laravel5_env_app_env`
     * The name of the environment this Laravel application instance is in
     * See the [Laravel documentation on environment configuration](http://laravel.com/docs/5.0/configuration#environment-configuration) for more information.
     * By default this variable will use the `app_environment` variable if available. If not, a fall back value will be used.
     * The `app_environment` variable **SHOULD** be set within a project, either in a playbook or group/host vars file.
-    * Default: "{{ app_environment }}" if defined otherwise, "production"
+    * Default: "{{ app_environment }}" if defined, otherwise "production"
 * `laravel5_env_app_debug`
-    * If "true" this Laravel application instance will display addition debugging information which **SHOULD** only be visible in non-production environments
+    * If "true" this Laravel application instance will display addition debugging information
     * See the [Laravel documentation on error handling configuration](http://laravel.com/docs/5.0/errors#configuration) for more information.
     * This is a binary variable and **MUST** be set to either "true" or "false" (without quotes).
     * Default: "false"
 * `laravel5_env_app_key`
     * A unique and secret string used for securing user sessions and other encrypted data
     * See the [Laravel documentation on application configuration](http://laravel.com/docs/master#configuration) for more information.
-    * By default this variable is set to *static* value that is the same for all instances of this role and therefore insecure. You **SHOULD** change this value to a unique 32 character string.
-    * You can use `php /path/to/artisan key:generate` to generate a unique value and update your `.env` file. You **MUST** then override this variable to use the generated value to ensure it is not replaced if this role is re-applied.
+    * By default, this variable is set to *static* value that is the same for all instances of this role and therefore insecure. You **SHOULD** change this value to a unique 32 character string.
+    * You can use `php /path/to/artisan key:generate` to generate a unique value and update your `.env` file. You **MUST** then override this variable to ensure the generated value is used if this role is re-applied.
     * Default: The sha512 hash of "some-random-string"
 * `laravel5_env_db_host`
-    * The hostname of the host providing the database of the default database connection for this Laravel application instance
+    * The host providing the database for the default Laravel database connection
     * See the [Laravel documentation on database connection configuration](http://laravel.com/docs/master/database) for more information.
     * By default this variable will use the `app_database_host` variable if available. If not, a fall back value will be used.
     * The `app_database_host` variable **SHOULD** be set within a project, either in a playbook or group/host vars file.
-    * Default: "{{ app_database_host }}" if defined otherwise, "localhost"
+    * Default: "{{ app_database_host }}" if defined, otherwise "localhost"
 * `laravel5_env_db_database`
-    * The name of the database for the default database connection for this Laravel application instance
+    * The name of the database for the default Laravel database connection
     * See the [Laravel documentation on database connection configuration](http://laravel.com/docs/master/database) for more information.
     * By default this variable will use the `app_database_db` variable if available. If not, a fall back value will be used.
     * The `app_database_db` variable **SHOULD** be set within a project, either in a playbook or group/host vars file.
-    * Default: "{{ app_database_db }}" if defined otherwise, "app"
+    * Default: "{{ app_database_db }}" if defined, otherwise "app"
 * `laravel5_env_db_username`
-    * The username for the user of the database for the default database connection for this Laravel application instance
+    * A username for the database of the default Laravel database connection
     * See the [Laravel documentation on database connection configuration](http://laravel.com/docs/master/database) for more information.
     * By default this variable will use the `app_database_username` variable if available. If not, a fall back value will be used.
     * The `app_database_username` variable **SHOULD** be set within a project, either in a playbook or group/host vars file.
-    * Default: "{{ app_database_username }}" if defined otherwise, "app"
+    * Default: "{{ app_database_username }}" if defined, otherwise "app"
 * `laravel5_env_db_password`
-    * The password for the user of the database for the default database connection for this Laravel application instance
+    * The password for the user specified by `laravel5_env_db_username`
     * See the [Laravel documentation on database connection configuration](http://laravel.com/docs/master/database) for more information.
-    * Naturally, this variable **SHOULD** be set to something unique and secure.
+    * Naturally, this variable **SHOULD** be something unique and secure.
     * By default this variable will use the `app_database_password` variable if available. If not, a fall back value will be used.
     * The `app_database_password` variable **SHOULD** be set within a project, either in a playbook or group/host vars file.
-    * Default: "{{ app_database_password }}" if defined otherwise, "password"
+    * Default: "{{ app_database_password }}" if defined, otherwise "password"
 
 ## Contributing
 
