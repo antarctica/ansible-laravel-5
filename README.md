@@ -6,7 +6,8 @@ Configures version 5 of the Laravel framework
 
 ## Overview
 
-* Optionally an alias for `php artisan` is added to an app users `.bash_aliases` file, this is enabled by default.
+* Configures a Laravel environment, and example environment, file.
+* Optionally adds an alias for `php artisan` to an app user's `.bash_aliases` file, this is enabled by default.
 
 ## Availability
 
@@ -27,8 +28,7 @@ This role is designed for internal use but if useful can be shared publicly.
 Laravel 5 is required to use this role. For older versions please see the `laravel` role (now deprecated).
 
 * For new projects [use Composer to create a new Laravel application](http://laravel.com/docs/5.0/installation).
-
-* For existing [1] projects you shouldn't need to make any changes. (i.e. where an `app` directory exists and )
+* For existing [1] projects you shouldn't need to make any changes.
 
 [1] You can tell if a project is already using Laravel by checking for `"laravel/framework"` in the project's `composer.json` file and the presence of an `app/` directory both within the path specified by `laravel5_app_root`.
 
@@ -40,7 +40,9 @@ Laravel 5 is required to use this role. For older versions please see the `larav
     * This variable **MUST** be a valid UNIX user.
     * Default: "app"
 * `laravel5_app_user_add_artisan_bash_aliases`
-    * Whether or not to add an alias for `php artisan` to the app users `.bash_aliases` file, if used/enabled
+    * If "true" an alias for `php artisan` will be added to the *app* user's `.bash_aliases` file, if used/enabled
+    * The *app* user is determined by `laravel5_app_user_username`.
+    * This is a binary variable and **MUST** be set to either "true" or "false" (without quotes).
     * Default: "true"
 * `laravel5_app_root`
     * Path to the directory holding the laravel app (i.e. containing `app/` and `composer.json`)
