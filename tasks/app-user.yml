@@ -1,0 +1,6 @@
+---
+# Configure application user account
+
+- name: ensure artisan alias is added to bash_aliases file for app user
+  lineinfile: dest=/home/"{{ laravel5_app_user_username }}"/.bash_aliases line="alias artisan=\"php {{ laravel5_app_root }}/artisan\"" state=present
+  when: laravel5_app_user_add_artisan_bash_aliases == true

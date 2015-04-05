@@ -1,0 +1,22 @@
+---
+galaxy_info:
+  description: Configures version 5 of the Laravel framework
+  author: British Antarctic Survey - Web and Applications Team
+  company: British Antarctic Survey
+  license: MIT
+  min_ansible_version: 1.6
+  platforms:
+  - name: Ubuntu
+      - trusty
+  categories:
+  - web
+
+armadillo_info:
+  name: Laravel 5
+  version: 0.1.0
+  source: git@stash.ceh.ac.uk:7999/barc/laravel5.git
+  dependencies:
+  - git@stash.ceh.ac.uk:7999/barc/dot-env.git#v0.1.0
+
+dependencies:
+  - dot-env

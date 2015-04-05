@@ -1,0 +1,52 @@
+---
+# These variables override role defaults but can be overriden by playbooks
+
+# Dot Env
+dot_env_file_path: "{{ laravel5_app_root }}/.env"
+
+dot_env_key_value_items:
+  - key: APP_ENV
+    value: "{{ laravel5_env_app_env }}"
+    example: production
+  - key: APP_DEBUG
+    value: "{{ laravel5_env_app_debug }}" 
+    example: false
+  - key: APP_KEY
+    value: "{{ laravel5_env_app_key }}"
+    example: some-random-string
+  - key: DB_HOST
+    value: "{{ laravel5_env_db_host }}"
+    example: localhost
+  - key: DB_DATABASE
+    value: "{{ laravel5_env_db_database }}"
+    example: database
+  - key: DB_USERNAME
+    value: "{{ laravel5_env_db_username }}"
+    example: username
+  - key: DB_PASSWORD
+    value: "{{ laravel5_env_db_password }}"
+    example: password
+  - key: CACHE_DRIVER
+    value: file
+    example: file
+  - key: SESSION_DRIVER
+    value: file
+    example: file
+  - key: QUEUE_DRIVER
+    value: sync
+    example: sync
+  - key: MAIL_DRIVER
+    value: smtp
+    example: smtp
+  - key: MAIL_HOST
+    value: mailtrap.io
+    example: smtp.provider.net
+  - key: MAIL_PORT
+    value: 2525
+    example: 2525
+  - key: MAIL_USERNAME
+    value: null
+    example: username
+  - key: MAIL_PASSWORD
+    value: null
+    example: password

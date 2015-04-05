@@ -1,0 +1,16 @@
+---
+# Default variables - inventory or playbook overrides will be respected
+
+laravel5_app_user_username: app
+laravel5_app_user_add_artisan_bash_aliases: true
+
+laravel5_app_root: "{{ app_root | default('/app') }}" 
+
+laravel5_env_app_env: "{{ app_environment | default('production') }}"
+laravel5_env_app_debug: false
+laravel5_env_app_key: "{{ 'some-random-string'|password_hash('sha512') }}"
+
+laravel5_env_db_host: "{{ app_database_host | default('localhost') }}"
+laravel5_env_db_database: "{{ app_database_db | default('app') }}"
+laravel5_env_db_username: "{{ app_database_username | default('app') }}"
+laravel5_env_db_password: "{{ app_database_password | default('password') }}"
