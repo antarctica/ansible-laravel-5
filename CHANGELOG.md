@@ -7,15 +7,19 @@ This role adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ### Added
 * Preliminary support for artisan scheduled tasks using a user crontab - yet to be tested.
+
+### Fixed
+* CHANGELOG: Using proper symbol for lists.
+
 ## [0.1.1] - 2015-04-05
 
 ### Changed
-- README: Improving role description.
-- Meta-File: Improving role description.
-- CHANGELOG: Updated structure to comply with [keepachangelog](http://keepachangelog.com/)
+* README: Improving role description.
+* Meta-File: Improving role description.
+* CHANGELOG: Updated structure to comply with [keepachangelog](http://keepachangelog.com/)
 
 ### Fixed
-- README: removing typos, documenting missing role features and variable descriptions.
+* README: removing typos, documenting missing role features and variable descriptions.
 
 ## [0.1.0] - 2015-04-05
 
