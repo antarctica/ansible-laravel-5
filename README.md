@@ -2,7 +2,7 @@
 
 **Part of the BAS Ansible Role Collection (BARC)**
 
-Configures version 5 of the Laravel framework
+Configures support for a Laravel 5 application
 
 ## Overview
 

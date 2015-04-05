@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  description: Configures version 5 of the Laravel framework
+  description: Configures support for a Laravel 5 application
   author: British Antarctic Survey - Web and Applications Team
   company: British Antarctic Survey
   license: MIT
