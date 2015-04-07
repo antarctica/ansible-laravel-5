@@ -11,6 +11,7 @@ This role adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 ## Changed
 * README: Improved readability.
 * REPO: Renaming repository to be compatible with Stash/Github naming conventions
+* DEPENDENCIES: Updating Ansible role dependencies
 
 ### Fixed
 * CHANGELOG: Using proper symbol for lists.
