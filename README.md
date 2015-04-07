@@ -1,4 +1,4 @@
-# Laravel 5 (`laravel5`)
+# Laravel 5 (`laravel-5`)
 
 **Part of the BAS Ansible Role Collection (BARC)**
 

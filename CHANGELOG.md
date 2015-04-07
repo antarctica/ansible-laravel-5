@@ -1,4 +1,4 @@
-# Laravel 5 (`laravel5`) - Change Log
+# Laravel 5 (`laravel-5`) - Change Log
 
 All notable changes to this role will be documented in this file.
 This role adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
@@ -10,6 +10,7 @@ This role adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## Changed
 * README: Improved readability.
+* REPO: Renaming repository to be compatible with Stash/Github naming conventions
 
 ### Fixed
 * CHANGELOG: Using proper symbol for lists.

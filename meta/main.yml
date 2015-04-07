@@ -14,7 +14,7 @@ galaxy_info:
 armadillo_info:
   name: Laravel 5
   version: 0.1.1
-  source: git@stash.ceh.ac.uk:7999/barc/laravel5.git
+  source: git@stash.ceh.ac.uk:7999/barc/laravel-5.git
   dependencies:
   - git@stash.ceh.ac.uk:7999/barc/dot-env.git#v0.1.0
 
